@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from allauth.socialaccount.providers.facebook.views import FacebookOAuth2Adapter
 from allauth.socialaccount.providers.instagram.views import InstagramOAuth2Adapter
+from rest_auth.registration.views import SocialLoginView
 schema_view = get_swagger_view(title='Rest API')
 
 class FacebookLogin(SocialLoginView):

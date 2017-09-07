@@ -14,7 +14,6 @@ services:
         volumes:
             - media:/media
             - static:/static
-            - dashboard:/dashboard
     redis:
         image: redis:latest
         restart: always
@@ -34,14 +33,12 @@ services:
             - media:/app/media
             - static:/app/static
             - db:/app/database
-            - dashboard:/app/dashboard
         command: /app/interface.sh
 volumes:
+    static:
+    data:
     media:
         external: true
-    data:
-    static:
-    dashboard:
     db:
         external: true
 networks:

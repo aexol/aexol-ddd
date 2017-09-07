@@ -1,0 +1,7 @@
+pip-selfcheck.json
+*.py[cod]
+!.dockerignore
+*.pot
+*.pyc
+*\.egg*
+.Python

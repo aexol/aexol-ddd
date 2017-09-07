@@ -1,0 +1,48 @@
+version: '2'
+services:
+    nginx:
+        build:
+            context: .
+            dockerfile: Dockerfile.nginx
+        restart: always
+        ports:
+            - "80:80"
+        depends_on:
+            - interface
+        networks:
+            - back
+        volumes:
+            - media:/media
+            - static:/static
+            - dashboard:/dashboard
+    redis:
+        image: redis:latest
+        restart: always
+        command: redis-server --appendonly yes
+        volumes:
+            - data:/data
+        networks:
+            - back
+    interface:
+        build: .
+        env_file: .envfile
+        links:
+            - redis:redis
+        networks:
+            - back
+        volumes:
+            - media:/app/media
+            - static:/app/static
+            - db:/app/database
+            - dashboard:/app/dashboard
+        command: /app/interface.sh
+volumes:
+    media:
+        external: true
+    data:
+    static:
+    dashboard:
+    db:
+        external: true
+networks:
+  back:

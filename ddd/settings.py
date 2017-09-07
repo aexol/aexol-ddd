@@ -84,6 +84,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.instagram',
     'rest_framework',
     'rest_framework_swagger',
+    'django_extensions',
     'ddd.app'
 ]
 
